@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>Grocery Store Price Tracker</title>
+   <link rel="stylesheet" href="css/addItem.css" />
+   <script type="text/javascript" src="script/addItem.js"></script>
+</head>
+<body>
+<header id="masthead">
+    <h1>Grocery Store Price Tracker</h1>
+    <nav>
+       <p><a href = "search.html">Search page</a></p>
+       <p><a href = "login.html">Login page</a></p>
+       <p><a href = "addItem.html">Add an Item</a></p>
+    </nav>
+</header>
+<h2>Add an item to the database!</h2>
+<div id = "add-item">
+    <form id = "newItem">
+        <p><label>Item name: </label><input type = "text" placeholder = "e.g. Black beans"></p>
+        <p><label>Item brand: </label><input type = "text" placeholder = "e.g. No name"></p>
+        <p><label>Store: </label><input type="text" placeholder = "e.g. Save-On-Foods"></p>
+        <p>
+            <label>Price: </label><input type = "number" placeholder = "e.g. 3.75">
+            <label>Weight/Volume: </label><input type = "number" placeholder = "e.g. 100">
+            <select>
+                <option selected = "selected">g</option>
+                <option>lb</option>
+                <option>kg</option>
+                <option>oz</option>
+                <option>ml</option>
+                <option>L</option>
+            </select>
+        </p>
+        <input type = "submit" value = "Add an item">
+    </form>
+</div>
+
+</body>
+</html>

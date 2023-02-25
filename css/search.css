@@ -1,0 +1,71 @@
+header{
+    display:block;
+    background-image: url("./../images/banner-name.jpg");
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-size:contain;
+    padding:2em;
+    width:auto;
+    margin:auto;
+    text-align:center;
+    text-shadow:1px 1px 1px rgb(39, 25, 25);
+}
+#search-bar{
+    width:300px;
+    margin-left: 5em;
+    margin-bottom: 1em;
+    size:100;
+}
+#right-sidebar{
+    background-color: lightgrey;
+    height: 600px;
+    float:left;
+    width:35em;
+    margin-left: 5em;
+    padding:0.5em 1em;
+    overflow: scroll;
+}
+#center{
+    background-color: lightgrey;
+    height: 600px;
+    overflow: scroll;
+    margin-left:45em;
+    margin-right: 5em;
+    padding:0.5em 1em;
+}
+.entry{
+    border-top: 1px solid orange;
+    padding-bottom: 1em;
+    margin-top:2em;
+    width:80%;
+    float:left;
+}
+#see-more{
+    margin-top:10em;
+    float:right;
+}
+.right{
+    float:right;
+    background-color: orange;
+    display: block;
+    padding:1em;
+    margin-bottom:0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}
+#prices{
+    border:1px solid black;
+    overflow:scroll;
+    max-height: 5em;
+}
+#more-info{
+    border: 1px solid black;
+    visibility:hidden;
+}
+#comments{
+    border: 1px solid black;
+    overflow:scroll;
+}
+nav p{
+    display:inline;
+    text-shadow:none;
+}
