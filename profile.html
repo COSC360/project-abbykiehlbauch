@@ -5,7 +5,7 @@
    <title>Grocery Store Price Tracker</title>
    <link rel="stylesheet" href="css/profile.css" />
    <link rel="stylesheet" href="css/header.css" />
-   <script type="text/javascript" src="script/search.js"></script>
+   <script type="text/javascript" src="script/profile.js"></script>
 </head>
 <body>
 <header id="masthead">
@@ -15,7 +15,9 @@
         <p><a href = "login.html">Login page</a></p>
         <p><a href = "addItem.html">Add an Item</a></p>
     </nav>
-    <img id = "profile" src = "images/profile.png">
+    <a href = "profile.html">
+        <img id = "profile" src = "images/profile.png" href = "profile.html">
+    </a>
 </header>
 
 <div id = "edit-profile">
@@ -41,6 +43,7 @@
     <tr colspan = "2"><td><input type = "submit" value = "Save Changes"> </td></tr>
 </table>
 </form>
+<input id = "logout" type = "button" value = "Log Out">
 </div>
 <h2>Tracked Items</h2>
 <div id = "alerts">
@@ -54,6 +57,11 @@
         </ul>
     </p>
     <p>Item description</p>
+    <form>
+        <label for = "tracked">Tracked price: $</label>
+        <input type = number id = "tracked" value = "1.95">
+        <input type = submit value = "Update tracked price">
+    </form>
 </div>
 </div>
 
