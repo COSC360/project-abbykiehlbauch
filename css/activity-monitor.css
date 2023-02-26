@@ -1,0 +1,51 @@
+#results{
+    background-color: lightgrey;
+    height: 600px;
+    float:left;
+    width:25em;
+    margin-left: 5em;
+    padding:0.5em 1em;
+    overflow: scroll;
+    margin-top:1em;
+}
+#site-activity{
+    background-color: lightgrey;
+    height: 600px;
+    overflow: scroll;
+    margin-left:35em;
+    margin-right: 5em;
+    padding:0.5em 1em;
+    margin-top:1em;
+}
+.user-entry{
+    padding-bottom: 1em;
+    margin-top:1em;
+    width:100%;
+    float:left;
+    background-color:white;
+    box-shadow: 4px 4px grey;
+    border-radius:1em;
+}
+#activity{
+    border:1px solid black;
+    overflow:scroll;
+    height:20em;
+}
+.entry{
+    border: 1px solid grey;
+    border-radius: 1em;
+    margin-bottom:1em;
+    margin:1em;
+    padding-left:1em;
+}
+#block-user{
+    margin-top:1em;
+    color:white;
+    background-color: red;
+}
+#search-dates{
+    clear:both;
+    display:block;
+    margin-left:5em;
+    margin-top:1em;
+}

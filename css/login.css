@@ -1,9 +1,11 @@
 #loginForm{
-    width: 50%;
     float:left;
+    margin-left:25%;
 }
 #registerForm{
-    margin-left:50%;
+    float:right;
+    margin-right:25%;
+
 }
 submit{
     display:inline;

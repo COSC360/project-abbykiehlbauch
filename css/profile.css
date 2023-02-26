@@ -3,8 +3,15 @@
     float:left;
     width:50%;
 }
+/*For user profile*/
 #alerts{
     display:block;
     margin-left:50%;
     overflow:scroll;
+}
+/*For admin profile*/
+#welcome{
+    display:block;
+    margin-left:50%;
+    float:clear;
 }
