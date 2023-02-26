@@ -1,0 +1,10 @@
+#edit-profile{
+    display:block;
+    float:left;
+    width:50%;
+}
+#alerts{
+    display:block;
+    margin-left:50%;
+    overflow:scroll;
+}

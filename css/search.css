@@ -1,21 +1,10 @@
-header{
-    display:block;
-    background-image: url("./../images/banner-name.jpg");
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-size:contain;
-    padding:2em;
-    width:auto;
-    margin:auto;
-    text-align:center;
-    text-shadow:1px 1px 1px rgb(39, 25, 25);
-}
 #search-bar{
     width:300px;
     margin-left: 5em;
     margin-bottom: 1em;
     size:100;
 }
-#right-sidebar{
+#results{
     background-color: lightgrey;
     height: 600px;
     float:left;
@@ -64,8 +53,4 @@ header{
 #comments{
     border: 1px solid black;
     overflow:scroll;
-}
-nav p{
-    display:inline;
-    text-shadow:none;
 }

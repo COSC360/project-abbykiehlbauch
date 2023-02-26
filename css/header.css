@@ -1,0 +1,23 @@
+header{
+    display:block;
+    background-image: url("./../images/banner-name.jpg");
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-size:contain;
+    padding:2em;
+    width:auto;
+    margin:auto;
+    text-align:center;
+    text-shadow:1px 1px 1px rgb(39, 25, 25);
+}
+nav p{
+    display:inline;
+    text-shadow:none;
+}
+#profile{
+    float:right;
+    height:5em;
+    width:auto;
+    position:absolute;
+    top:3em;
+    right:5em;
+}

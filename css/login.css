@@ -1,8 +1,3 @@
-header{
-    display:block;
-    background-image: url("./../images/banner-name.jpg");
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
 #loginForm{
     width: 50%;
     border:1px solid black;
