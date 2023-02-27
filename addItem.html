@@ -5,7 +5,7 @@
    <title>Grocery Store Price Tracker</title>
    <link rel="stylesheet" href="css/addItem.css" />
    <link rel="stylesheet" href="css/header.css" />
-   <script type="text/javascript" src="script/addItem.js"></script>
+   <script type="text/javascript" src="script/add-item.js"></script>
 </head>
 <body>
 <header id="masthead">
@@ -20,24 +20,28 @@
 </a></header>
 <h2>Add an item to the database!</h2>
 <div id = "add-item">
-    <form id = "newItem">
-        <p><label>Item name: </label><input type = "text" placeholder = "e.g. Black beans"></p>
-        <p><label>Item brand: </label><input type = "text" placeholder = "e.g. No name"></p>
-        <p><label>Store: </label><input type="text" placeholder = "e.g. Save-On-Foods"></p>
-        <p>
-            <label>Price: </label><input type = "number" placeholder = "e.g. 3.75">
-            <label>Weight/Volume: </label><input type = "number" placeholder = "e.g. 100">
-            <select>
-                <option selected = "selected">g</option>
-                <option>lb</option>
-                <option>kg</option>
-                <option>oz</option>
-                <option>ml</option>
-                <option>L</option>
-            </select>
-        </p>
-        <input type = "submit" value = "Add an item">
-    </form>
+    <table>
+        <form id = "newItem" action = "search.html">
+            <tr><td><label>Item name: </label></td><td><input type = "text" placeholder = "e.g. Black beans"></td></tr>
+            <tr><td><label>Item brand: </label></td><td><input type = "text" placeholder = "e.g. No name"></td></tr>
+            <tr><td><label>Store: </label></td><td><input type="text" placeholder = "e.g. Save-On-Foods"></td></tr>
+            <tr>
+                <td><label>Price: </label><input id = "price" type = "number" placeholder = "e.g. 3.75"></td>
+                <td><label>Weight/Volume: </label><input  id = "weight" type = "number" placeholder = "e.g. 100">
+                <select id = "units">
+                    <option value="none" selected disabled hidden></option>
+                    <option>g</option>
+                    <option>lb</option>
+                    <option>kg</option>
+                    <option>oz</option>
+                    <option>ml</option>
+                    <option>L</option>
+                </select></td>
+            </tr>
+            <tr><td><label for = "description">Item description: </label></td><td><input id = description type = "text"></td></tr>
+            <tr><td colspan = "2"><input type = "submit" value = "Add an item"></td></tr>
+        </form>
+    </table>
 </div>
 
 </body>
