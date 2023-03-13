@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    // Check if the user is not logged in and redirect to the login page
+    if (!isset($_SESSION['username'])) {
+        header('location: login.php');
+        exit();
+    }
+    $connString = "localhost";
+    $user = 'root';
+    $pass = 'rootuser';
+    $dbname = "groceryTracker";
+    $conn = new mysqli($connString, $user, $pass, $dbname);
+
+?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -6,6 +20,7 @@
    <link rel="stylesheet" href="css/search.css" />
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/search.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header id="masthead">
@@ -21,8 +36,11 @@
         </header>
 <div id = "search-bar">
     <p>
-        <label for = "searchbar">Search for items: </label>
-        <input type = "search" id = "searchbar">
+        <form id = "search-bar">
+            <label for = "searchbar">Search for items: </label>
+            <input type = "search" id = "searchbar">
+            <input type = "submit" value = "GO">
+        </form>
     </p>
 </div>
 <div id="main">
@@ -40,7 +58,6 @@
         <p>Item description</p>
         <input id = "see-more" type = "button" value = "See more">
     </div>
-    
 </div>
 <div id="center">
     <div id="more-info">
@@ -87,10 +104,12 @@
         </div>
         <h3>Forum</h3>
         <div id = "comments">
-            <article class = "entry">
-                <p>Date - Username</p>
-                <p>Comment</p>
-            </article>
+            <?php
+                echo "<article class = \"entry\">";
+                    echo "<p>Date - Username</p>";
+                    echo "<p>Comment</p>";
+                echo "</article>";
+            ?>
             <article class = "entry">
                 <p>Date - Username</p>
                 <p>Comment</p>

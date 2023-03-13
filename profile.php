@@ -1,11 +1,24 @@
 <?php
-session_start();
+    session_start();
+    // Check if the user is not logged in and redirect to the login page
+    if (!isset($_SESSION['username'])) {
+        header('location: login.php');
+        exit();
+    }
+    $connString = "localhost";
+    $user = 'root';
+    $pass = 'rootuser';
+    $dbname = "groceryTracker";
+    $conn = new mysqli($connString, $user, $pass, $dbname);
 
-// Check if the user is not logged in and redirect to the login page
-if (!isset($_SESSION['username'])) {
-    header('location: login.php');
-    exit();
-}
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
+    $stmt->bind_param("s",$_SESSION['username']);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($username, $password, $email, $fname, $lname);
+    while($stmt->fetch()){
+        $username.$password.$email.$fname.$lname;
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,26 +41,25 @@ if (!isset($_SESSION['username'])) {
         <img id = "profile" src = "images/profile.png" href = "profile.php">
     </a>
 </header>
-
 <div id = "edit-profile">
-<h2>Welcome <span id = "fname">Jane</span>!</h2>
+<?php echo "<h2>Welcome <span id = \"fname\">".$fname."</span>!</h2>" ?>
 <table>
 <form id = "profile-info">
     <tr>
         <td><label for = "email">Email Address: </label></td>
-        <td><input type = "email" id = "email" value = "example@mail.com"></td>
+        <?php echo "<td><input type = \"email\" id = \"email\" value = '".$email."'></td>" ?>
     </tr>
     <tr>
         <td><label for = "username">Username: </label></td>
-        <td><input type = "text" id = "username" value = "janedoe"></td>
+        <?php echo "<td><input type = 'text' id = 'username' value = '".$username."'></td>" ?>
     </tr>
     <tr>
         <td><label for = "firstName">First Name: </label></td>
-        <td><input type = "text" id = "firstName" value = "Jane"></td>
+        <?php echo "<td><input type = 'text' id = 'firstName' value = '".$fname."'></td>" ?>
     </tr>
     <tr>
         <td><label for = "lastName">Last Name: </label></td>
-        <td><input type = "text" id = "lastName" value = "Doe"></td>
+        <?php echo "<td><input type = 'text' id = 'lastName' value = '".$lname."'></td>" ?>
     </tr>
     <tr colspan = "2"><td><input type = "submit" value = "Save Changes"> </td></tr>
 </table>
