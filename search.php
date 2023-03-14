@@ -26,17 +26,17 @@
     <header id="masthead">
         <h1>Grocery Store Price Tracker</h1>
         <nav>
-            <p><a href = "search.html">Search page</a></p>
-            <p><a href = "login.html">Login page</a></p>
-            <p><a href = "addItem.html">Add an Item</a></p>
+            <p><a href = "search.php">Search page</a></p>
+            <p><a href = "login.php">Login page</a></p>
+            <p><a href = "addItem.php">Add an Item</a></p>
         </nav>
-        <a href = "profile.html">
-            <img id = "profile" src = "images/profile.png" href = "user-profile.html">
+        <a href = "profile.php">
+            <img id = "profile" src = "images/profile.png" href = "user-profile.php">
         </a>
         </header>
 <div id = "search-bar">
     <p>
-        <form id = "search-bar">
+        <form id = "search_bar">
             <label for = "searchbar">Search for items: </label>
             <input type = "search" id = "searchbar">
             <input type = "submit" value = "GO">
@@ -46,7 +46,7 @@
 <div id="main">
 <div id="results">
     <h1>Results</h1>
-    <div class="item-entry">
+    <!--<div id="item-entry">
         <h3>Item Name</h3>
         <p>
             <ul>
@@ -57,7 +57,7 @@
         </p>
         <p>Item description</p>
         <input id = "see-more" type = "button" value = "See more">
-    </div>
+    </div> -->
 </div>
 <div id="center">
     <div id="more-info">
@@ -119,9 +119,11 @@
                 <p>Comment</p>
             </article>
         </div>
-        <p id = "write-comment">
-            <input type = "text">
-            <input type = "submit" value = "Send">
+        <p>
+            <form id = "write-comment" method = POST action = "insertComment.php">
+                <input type = "text" name = "comment">
+                <input type = "submit" value = "Send">
+            </form>
         </p>
     </div>
 </div>

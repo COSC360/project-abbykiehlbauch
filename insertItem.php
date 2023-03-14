@@ -9,7 +9,6 @@
     
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
-        echo "hi";
     }    
     // prepare and bind
     echo $_POST['itemName'];
