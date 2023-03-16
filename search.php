@@ -19,10 +19,12 @@
    <link rel="stylesheet" href="css/search.css" />
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/search.js"></script>
+
    <script src="https://ajax.aspnetCDN.com/ajax/jQuery/jQuery-3.3.1.min.js"></script>
    <script>
+        //call php file to generate results
         function results(){
-        var str = document.getElementById("searchbar").value;
+            var str = document.getElementById("searchbar").value;
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200){
@@ -33,10 +35,38 @@
             xmlhttp.send();
             return false;
         }
-        function addListener(){
+        //call PHP file to generate more-info section
+        function addListener(prodId){
             var moreInfo = document.getElementById("more-info");
             moreInfo.style.visibility = "visible";
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    document.getElementById("product-info").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "moreinfo.php?q="+prodId);
+            xmlhttp.send();
         }
+        /*
+        //call PHP file to insert new price into system
+        function logPrice(prodId){
+            console.log("hi");
+            var price = document.getElementById("new-price").value;
+            var weight = document.getElementById("weight").value;
+            var unit = document.getElementById("units").value;
+            var xmlhttp = new XMLHttpRequest();
+            
+            xmlhttp.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    //document.getElementById("product-info").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "logprice.php");
+            //?prodId="+prodId+"?new-price="+price+"?weight="+weight+"?unit="+unit
+            xmlhttp.send();
+        }
+        */
         
     </script>
 </head>
@@ -61,76 +91,14 @@
     </p>
 </div>
 <div id="main">
-<h1>Results</h1>
-<div id="results"></div>
-<div id="center">
-    <div id="more-info">
-        <h3>Item Name</h3>
-        <p>
-            <ul>
-                <li>Item Price</li>
-                <li>Brand</li>
-                <li>Store</li>
-            </ul>
-        </p>
-        <p>Item description</p>
-        <h4>Price History</h4>
-        <div id = "prices">
-            <p>Date - Price</p>
-            <p>Date - Price</p>
-            <p>Date - Price</p>
-            <p>Date - Price</p>
-            <p>Date - Price</p>
-        </div>
-        <div id = "price-alert">
-            <form>
-                <p>
-                <label for = "target-price">Track this item and be alerted when it reaches a certain price!</label>
-                <input id = "target-price" type = "number">
-                <input type = "button" value = "Track item">
-            </p>
-            </form>
-        </div>
-        <div id = "log-price">
-            <h3>Log Price</h3>
-            <form>
-                <input id = "new-price" type = "number">
-                <select id = "units">
-                    <option>lb</option>
-                    <option>g</option>
-                    <option>kg</option>
-                    <option>oz</option>
-                    <option>ml</option>
-                    <option>L</option>
-                </select>
-                <input type = "button" value = "Log new price">
-            </form>
-        </div>
-        <h3>Forum</h3>
-        <div id = "comments">
-            <?php
-                echo "<article class = \"entry\">";
-                    echo "<p>Date - Username</p>";
-                    echo "<p>Comment</p>";
-                echo "</article>";
-            ?>
-            <article class = "entry">
-                <p>Date - Username</p>
-                <p>Comment</p>
-            </article>
-            <article class = "entry">
-                <p>Date - Username</p>
-                <p>Comment</p>
-            </article>
-        </div>
-        <p>
-            <form id = "write-comment" method = POST action = "insertComment.php">
-                <input type = "text" name = "comment">
-                <input type = "submit" value = "Send">
-            </form>
-        </p>
+    <h1>Results</h1>
+
+    <div id="results"></div>
+
+    <div id="center">
+        <div id="more-info">
+        <div id = "product-info"></div>
     </div>
-</div>
 </div>
 </body>
 

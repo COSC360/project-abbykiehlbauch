@@ -13,11 +13,11 @@
     // prepare and bind
     echo $_POST['itemName'];
     if(isset($_POST['description'])){
-        $stmt = $conn->prepare("INSERT INTO products (productName, productBrand, store, `description`, volume, unit) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssds",$_POST['itemName'], $_POST['itemBrand'],$_POST['store'],$_POST['description'],$_POST['volume'], $_POST['units']);
+        $stmt = $conn->prepare("INSERT INTO products (productName, productBrand, store, `description`, volume, unit, currPrice) VALUES (?, ?, ?, ?, ?, ?,?)");
+        $stmt->bind_param("ssssdsd",$_POST['itemName'], $_POST['itemBrand'],$_POST['store'],$_POST['description'],$_POST['volume'], $_POST['units'],$_POST['price']);
     }else{
-        $stmt = $conn->prepare("INSERT INTO products (productName, productBrand, store, volume, unit) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssds",$_POST['itemName'], $_POST['itemBrand'],$_POST['store'],$_POST['volume'], $_POST['units']);
+        $stmt = $conn->prepare("INSERT INTO products (productName, productBrand, store, volume, unit, currPrice) VALUES (?, ?, ?, ?, ?,?)");
+        $stmt->bind_param("sssdsd",$_POST['itemName'], $_POST['itemBrand'],$_POST['store'],$_POST['volume'], $_POST['units'],$_POST['price']);
     }
     $stmt->execute();
     $stmt->close();

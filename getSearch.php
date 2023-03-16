@@ -28,9 +28,8 @@ while($row = mysqli_fetch_array($result)){
             </ul>
         </p>
         <p>".$row['description']."</p>";
-        echo "<input id = 'see-more' type = 'button' value = 'See more' onclick = 'return addListener()'>";
+        echo "<input id = 'see-more' type = 'button' value = 'See more' onclick = 'return addListener(".$row['productId'].")'>";
         echo "</div>";
     };
-
 mysqli_close($conn);
 ?>
