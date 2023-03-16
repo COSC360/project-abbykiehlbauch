@@ -10,7 +10,6 @@
     $pass = 'rootuser';
     $dbname = "groceryTracker";
     $conn = new mysqli($connString, $user, $pass, $dbname);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +19,26 @@
    <link rel="stylesheet" href="css/search.css" />
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/search.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://ajax.aspnetCDN.com/ajax/jQuery/jQuery-3.3.1.min.js"></script>
+   <script>
+        function results(){
+        var str = document.getElementById("searchbar").value;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    document.getElementById("results").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "getSearch.php?q="+str);
+            xmlhttp.send();
+            return false;
+        }
+        function addListener(){
+            var moreInfo = document.getElementById("more-info");
+            moreInfo.style.visibility = "visible";
+        }
+        
+    </script>
 </head>
 <body>
     <header id="masthead">
@@ -36,29 +54,15 @@
         </header>
 <div id = "search-bar">
     <p>
-        <form id = "search_bar">
+        <form id = "search-bar" >
             <label for = "searchbar">Search for items: </label>
-            <input type = "search" id = "searchbar">
-            <input type = "submit" value = "GO">
+            <input type = "search" id = "searchbar" onkeyup = "return results()" placeholder = "Start typing to see items...">
         </form>
     </p>
 </div>
 <div id="main">
-<div id="results">
-    <h1>Results</h1>
-    <!--<div id="item-entry">
-        <h3>Item Name</h3>
-        <p>
-            <ul>
-                <li>Item Price</li>
-                <li>Brand</li>
-                <li>Store</li>
-            </ul>
-        </p>
-        <p>Item description</p>
-        <input id = "see-more" type = "button" value = "See more">
-    </div> -->
-</div>
+<h1>Results</h1>
+<div id="results"></div>
 <div id="center">
     <div id="more-info">
         <h3>Item Name</h3>
@@ -129,4 +133,6 @@
 </div>
 </div>
 </body>
+
+</script>
 </html>
