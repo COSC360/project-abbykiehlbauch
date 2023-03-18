@@ -21,7 +21,7 @@ else
 echo "<h3>".$row['productName']."</h3>
         <p>
             <ul>
-                <li>Item Price</li>
+                <li>$".$row['currPrice']."</li>
                 <li>".$row['productBrand']."</li>
                 <li>".$row['store']."</li>
             </ul>
@@ -47,7 +47,6 @@ echo "<h3>".$row['productName']."</h3>
             </form>
         </div>
         */
-        //echo $q;
         echo "<div id = 'log-price'>
             <h3>Log Price</h3>
             <form id = 'priceLog' method = post action = 'logprice.php?'>
@@ -55,31 +54,26 @@ echo "<h3>".$row['productName']."</h3>
                 <input type = 'submit' value = 'Log new price'>
             </form>
         </div>";
-        /*
-        <h3>Forum</h3>
-        <div id = "comments">
-            <?php
-                echo "<article class = \"entry\">";
-                    echo "<p>Date - Username</p>";
-                    echo "<p>Comment</p>";
-                echo "</article>";
-            ?>
-            <article class = "entry">
-                <p>Date - Username</p>
-                <p>Comment</p>
-            </article>
-            <article class = "entry">
-                <p>Date - Username</p>
-                <p>Comment</p>
-            </article>
-        </div>
-        <p>
-            <form id = "write-comment" method = POST action = "insertComment.php">
-                <input type = "text" name = "comment">
-                <input type = "submit" value = "Send">
+        
+        $sqlc = "SELECT `date`, username, comment FROM comments WHERE productId = ".$_GET['q']." ORDER BY date DESC";
+        $comments = mysqli_query($conn,$sqlc);
+        echo "<h3>Forum</h3>
+        <div id = 'comments'>";
+        while($comm = mysqli_fetch_array($comments)){
+            echo "<article class = \"entry\">
+                <p>".$comm['date']." - ".$comm['username']."</p>
+                <p>".$comm['comment']."</p>
+            </article>";
+        }
+        echo "</div>";
+
+        echo "<p>
+            <form id = 'write-comment' method = POST action = 'insertComment.php'>
+                <input type = 'text' name = 'comment'>
+                <input type = 'submit' value = 'Send'>
             </form>
         </p>
-    </div>
-    */
+    </div>";
+    
 }
 ?>

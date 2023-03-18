@@ -20,7 +20,7 @@ $stmtPrice = $conn->prepare("UPDATE products SET currPrice = ? WHERE productId =
 $stmtPrice->bind_param("di",$_POST['price'], $_SESSION['productId']);
 $stmtPrice->execute();
 
-echo "Thank updating the price!";
+echo "Thanks for updating the price!";
 
 $stmtPrice->close();
 $conn->close();

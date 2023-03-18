@@ -48,25 +48,6 @@
             xmlhttp.open("GET", "moreinfo.php?q="+prodId);
             xmlhttp.send();
         }
-        /*
-        //call PHP file to insert new price into system
-        function logPrice(prodId){
-            console.log("hi");
-            var price = document.getElementById("new-price").value;
-            var weight = document.getElementById("weight").value;
-            var unit = document.getElementById("units").value;
-            var xmlhttp = new XMLHttpRequest();
-            
-            xmlhttp.onreadystatechange = function(){
-                if (this.readyState == 4 && this.status == 200){
-                    //document.getElementById("product-info").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "logprice.php");
-            //?prodId="+prodId+"?new-price="+price+"?weight="+weight+"?unit="+unit
-            xmlhttp.send();
-        }
-        */
         
     </script>
 </head>
