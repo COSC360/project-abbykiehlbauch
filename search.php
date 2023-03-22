@@ -31,7 +31,7 @@
                     document.getElementById("results").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "getSearch.php?q="+str);
+            xmlhttp.open("GET", "userBackend/getSearch.php?q="+str);
             xmlhttp.send();
             return false;
         }
@@ -45,7 +45,7 @@
                     document.getElementById("product-info").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "moreinfo.php?q="+prodId);
+            xmlhttp.open("GET", "userBackend/moreinfo.php?q="+prodId);
             xmlhttp.send();
         }
         

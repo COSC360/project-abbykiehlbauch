@@ -11,11 +11,11 @@
     <header id="masthead">
         <h1>Grocery Store Price Tracker</h1>
         <nav>
-            <p><a href = "search-users.html">Search for Users</a></p>
-            <p><a href = "activity-monitor.html">Activity Monitor</a></p>
+            <p><a href = "search-users.php">Search for Users</a></p>
+            <p><a href = "activity-monitor.php">Activity Monitor</a></p>
         </nav>
-        <a href = "profile.html">
-            <img id = "profile" src = "images/profile.png" href = "admin-profile.html">
+        <a href = "admin-profile.php">
+            <img id = "profile" src = "images/profile.png" href = "admin-profile.php">
         </a>
         </header>
 <div id = "search-bar">

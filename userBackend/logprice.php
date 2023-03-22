@@ -19,9 +19,9 @@ $stmt->close();
 $stmtPrice = $conn->prepare("UPDATE products SET currPrice = ? WHERE productId = ?");
 $stmtPrice->bind_param("di",$_POST['price'], $_SESSION['productId']);
 $stmtPrice->execute();
-
-echo "Thanks for updating the price!";
-
 $stmtPrice->close();
 $conn->close();
+
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+exit();
 ?>

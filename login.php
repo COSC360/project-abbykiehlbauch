@@ -34,7 +34,7 @@
 <!--Register in system-->
 <div id = "registerForm">
     <h3>New here? Register today!</h3>
-    <form name="register" method=post action="addUser.php">
+    <form name="register" method=post action="userBackend/addUser.php">
     <table>
     <tr>
         <td>Email address: </td>

@@ -19,6 +19,8 @@
     while($stmt->fetch()){
         $username.$password.$email.$fname.$lname;
     }
+
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,6 +29,7 @@
    <title>Grocery Store Price Tracker</title>
    <link rel="stylesheet" href="css/profile.css" />
    <link rel="stylesheet" href="css/header.css" />
+   <script src="https://ajax.aspnetCDN.com/ajax/jQuery/jQuery-3.3.1.min.js"></script>
    <script type="text/javascript" src="script/user-profile.js"></script>
 </head>
 <body>
@@ -44,24 +47,24 @@
 <div id = "edit-profile">
 <?php echo "<h2>Welcome <span id = \"fname\">".$fname."</span>!</h2>" ?>
 <table>
-<form id = "profile-info">
-    <tr>
-        <td><label for = "email">Email Address: </label></td>
-        <?php echo "<td><input type = \"email\" id = \"email\" value = '".$email."'></td>" ?>
-    </tr>
+<form id = "profile-info" method = POST action = "userBackend/updateProfile.php">
     <tr>
         <td><label for = "username">Username: </label></td>
-        <?php echo "<td><input type = 'text' id = 'username' value = '".$username."'></td>" ?>
+        <?php echo "<td><input type = 'text' name = 'username' value = '".$username."' readonly></td>" ?>
+    </tr>
+    <tr>
+        <td><label for = "email">Email Address: </label></td>
+        <?php echo "<td><input type = \"email\" name = \"email\" value = '".$email."'></td>" ?>
     </tr>
     <tr>
         <td><label for = "firstName">First Name: </label></td>
-        <?php echo "<td><input type = 'text' id = 'firstName' value = '".$fname."'></td>" ?>
+        <?php echo "<td><input type = 'text' name = 'firstName' value = '".$fname."'></td>" ?>
     </tr>
     <tr>
         <td><label for = "lastName">Last Name: </label></td>
-        <?php echo "<td><input type = 'text' id = 'lastName' value = '".$lname."'></td>" ?>
+        <?php echo "<td><input type = 'text' name = 'lastName' value = '".$lname."'></td>" ?>
     </tr>
-    <tr colspan = "2"><td><input type = "submit" value = "Save Changes"> </td></tr>
+    <tr colspan = "2"><td><input type = "submit" value = "Save Changes"></td></tr>
 </table>
 </form>
 <form id = "logoutButton" method = "post" action = "logout.php">
@@ -70,23 +73,27 @@
 </div>
 <h2>Tracked Items</h2>
 <div id = "alerts">
-<div class="entry">
-    <h3>Item Name</h3>
-    <p>
-        <ul>
-            <li>Item Price</li>
-            <li>Brand</li>
-            <li>Store</li>
-        </ul>
-    </p>
-    <p>Item description</p>
-    <form>
-        <label for = "tracked">Tracked price: $</label>
-        <input type = number id = "tracked" value = "1.95">
-        <input type = submit value = "Update tracked price">
-    </form>
-</div>
-</div>
 
+<?php
+    $tracked = "SELECT * FROM trackeditems JOIN products ON trackedItems.productId = products.productId WHERE trackeditems.username = '".$_SESSION['username']."'";
+    $result = mysqli_query($conn,$tracked);
+
+    while($row = mysqli_fetch_array($result)){
+        echo "<div class = entry>";
+        echo"<h3>".$row['productName']."</h3>";
+        echo"<p>
+            <ul>
+                <li>$".$row['currPrice']."</li>
+                <li>".$row['productBrand']."</li>
+                <li>".$row['store']."</li>
+            </ul>
+        </p>
+        <p>".$row['description']."</p>";
+        echo "<p>Target price: ".$row['trackedPrice']."</p>";
+        echo "</div>";
+    };
+
+?>
+</div>
 </body>
 </html>

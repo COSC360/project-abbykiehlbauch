@@ -36,20 +36,22 @@ echo "<h3>".$row['productName']."</h3>
             echo "<p>".$price['priceDate']." - $".$price['price']."</p>";
         }
         echo "</div>";
-        /*
-        <div id = "price-alert">
-            <form>
+        
+        //set price alert
+        echo "<div id = 'price-alert'>
+                <form id = 'trackPrice' method = POST action = 'userBackend/trackPrice.php'>
                 <p>
-                <label for = "target-price">Track this item and be alerted when it reaches a certain price!</label>
-                <input id = "target-price" type = "number">
-                <input type = "button" value = "Track item">
-            </p>
+                    <label for = 'target-price'>Track this item and be alerted when it reaches a certain price!</label>
+                    <input name = 'target-price' type = 'text'>
+                    <input type = 'submit' value = 'Track item'>
+                </p>
             </form>
-        </div>
-        */
+        </div>";
+
+        //log new price for a product
         echo "<div id = 'log-price'>
             <h3>Log Price</h3>
-            <form id = 'priceLog' method = post action = 'logprice.php?'>
+            <form id = 'priceLog' method = post action = 'userBackend/logprice.php'>
                 <input id = 'new-price' name = 'price' type = 'text'>
                 <input type = 'submit' value = 'Log new price'>
             </form>
@@ -67,8 +69,9 @@ echo "<h3>".$row['productName']."</h3>
         }
         echo "</div>";
 
+        //write a comment
         echo "<p>
-            <form id = 'write-comment' method = POST action = 'insertComment.php'>
+            <form id = 'write-comment' method = POST action = 'userBackend/insertComment.php'>
                 <input type = 'text' name = 'comment'>
                 <input type = 'submit' value = 'Send'>
             </form>

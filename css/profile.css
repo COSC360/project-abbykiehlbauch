@@ -8,10 +8,21 @@
     display:block;
     margin-left:50%;
     overflow:scroll;
+    padding:0.5em 1em;
+    background-color: lightgrey;
 }
 /*For admin profile*/
 #welcome{
     display:block;
     margin-left:50%;
     float:clear;
+}
+.entry{
+    padding-bottom: 1em;
+    margin-top:1em;
+    width:100%;
+    float:left;
+    background-color:white;
+    box-shadow: 4px 4px grey;
+    border-radius:1em;
 }

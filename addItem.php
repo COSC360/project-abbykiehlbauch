@@ -11,17 +11,17 @@
 <header id="masthead">
 <h1>Grocery Store Price Tracker</h1>
 <nav>
-    <p><a href = "search.html">Search page</a></p>
-    <p><a href = "login.html">Login page</a></p>
-    <p><a href = "addItem.html">Add an Item</a></p>
+    <p><a href = "search.php">Search page</a></p>
+    <p><a href = "login.php">Login page</a></p>
+    <p><a href = "addItem.php">Add an Item</a></p>
 </nav>
-<a href = "profile.html">
-    <img id = "profile" src = "images/profile.png" href = "user-profile.html">
+<a href = "profile.php">
+    <img id = "profile" src = "images/profile.png" href = "user-profile.php">
 </a></header>
 <h2>Add an item to the database!</h2>
 <div id = "add-item">
     <table>
-        <form id = "newItem" method = post action = "insertItem.php">
+        <form id = "newItem" method = post action = "userBackend/insertItem.php">
             <tr><td><label>Item name: </label></td><td><input type = "text" name = "itemName" placeholder = "e.g. Black beans"></td></tr>
             <tr><td><label>Item brand: </label></td><td><input type = "text" name = "itemBrand" placeholder = "e.g. No name"></td></tr>
             <tr><td><label>Store: </label></td><td><input type="text" name = "store" placeholder = "e.g. Save-On-Foods"></td></tr>

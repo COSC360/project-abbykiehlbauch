@@ -11,7 +11,6 @@
         die("Connection failed: " . $conn->connect_error);
     }    
     // prepare and bind
-    echo $_POST['itemName'];
     if(isset($_POST['description'])){
         $stmt = $conn->prepare("INSERT INTO products (productName, productBrand, store, `description`, volume, unit, currPrice) VALUES (?, ?, ?, ?, ?, ?,?)");
         $stmt->bind_param("ssssdsd",$_POST['itemName'], $_POST['itemBrand'],$_POST['store'],$_POST['description'],$_POST['volume'], $_POST['units'],$_POST['price']);
