@@ -8,7 +8,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }    
 
-$sql = "SELECT * FROM users WHERE username LIKE '%".$q."%'";
+$sql = "SELECT * FROM users WHERE username LIKE '%".$q."%' OR emailAddress LIKE '%".$q."%'";
 $result = mysqli_query($conn,$sql);
 while($row = mysqli_fetch_array($result)){
         echo "<div class = user-entry>";

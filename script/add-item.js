@@ -2,9 +2,9 @@ window.addEventListener("load", function(){
     document.getElementById("submitBtn").addEventListener("click", function(e){
         var fields = document.getElementsByTagName("input");
 
+        console.log(fields);
         var empty = false;
-        for(let i = 0; i < fields.length-1; i++){
-            console.log(fields[i]);
+        for(let i = 0; i < fields.length-2; i++){
             if(fields[i].value == "")
             {
                 e.preventDefault(); 

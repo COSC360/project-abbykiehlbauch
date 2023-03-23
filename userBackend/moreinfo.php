@@ -39,8 +39,8 @@ echo "<h3>".$row['productName']."</h3>
                 <form id = 'trackPrice' method = POST action = ''>
                 <p>
                     <label for = 'target-price'>Track this item and be alerted when it reaches a certain price!</label>
-                    <input name = 'target-price' type = 'text'>
-                    <input id = 'submitBtn' type = 'button' value = 'Track item'>
+                    <input id = 'target-price' type = 'text'>
+                    <input id = 'trackBtn' type = 'button' value = 'Track item'>
                 </p>
             </form>
         </div>";

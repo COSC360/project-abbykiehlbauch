@@ -16,6 +16,8 @@
    <link rel="stylesheet" href="css/search-users.css" />
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/search-users.js"></script>
+   <script src="https://ajax.aspnetCDN.com/ajax/jQuery/jQuery-3.3.1.min.js"></script>
+
 </head>
 <body>
     <?php include "adminHeader.php"?>

@@ -24,8 +24,20 @@ function viewMore(username){
     xmlhttp.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
             document.getElementById("user-info").innerHTML = this.responseText;
+            console.log(username);
+            initializeListener();
         }
     };
     xmlhttp.open("GET", "adminBackend/moreinfo.php?q="+username);
     xmlhttp.send();
+}
+
+function initializeListener(){
+    document.getElementById("delete").addEventListener("click",function(e){
+        $nodes = this.parentNode.value;
+        $.ajax({url: "adminBackend/deleteComment.php", type: 'POST', data:{user: 'this.parentNode.value'}, success: function(response){
+            alert("This comment has been deleted");
+            }
+        });
+    });
 }
