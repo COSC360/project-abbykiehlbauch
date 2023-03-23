@@ -39,8 +39,8 @@
                 </select></td>
             </tr>
             <tr><td><label for = "description">Item description: </label></td><td><input name = description type = "text"></td></tr>
-            <tr><td colspan = "2"><input id = "submitBtn" type = "button" value = "Add an item" onclick = "submitForm();"></td></tr>
-        </form>
+        </form>            <tr><td colspan = "2"><input id = "submitBtn" type = "button" value = "Add an item"></td></tr>
+
     </table>
 </div>
 </body>

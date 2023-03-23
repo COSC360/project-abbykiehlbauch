@@ -36,11 +36,11 @@ echo "<h3>".$row['productName']."</h3>
         
         //set price alert
         echo "<div id = 'price-alert'>
-                <form id = 'trackPrice' method = POST action = 'userBackend/trackPrice.php'>
+                <form id = 'trackPrice' method = POST action = ''>
                 <p>
                     <label for = 'target-price'>Track this item and be alerted when it reaches a certain price!</label>
                     <input name = 'target-price' type = 'text'>
-                    <input type = 'submit' value = 'Track item'>
+                    <input id = 'submitBtn' type = 'button' value = 'Track item'>
                 </p>
             </form>
         </div>";
@@ -48,9 +48,9 @@ echo "<h3>".$row['productName']."</h3>
         //log new price for a product
         echo "<div id = 'log-price'>
             <h3>Log Price</h3>
-            <form id = 'priceLog' method = post action = 'userBackend/logprice.php'>
+            <form id = 'priceLog' method = 'POST' action = ''>
                 <input id = 'new-price' name = 'price' type = 'text'>
-                <input type = 'submit' value = 'Log new price'>
+                <input id = 'submitBtn' type = 'button' value = 'Log new price'>
             </form>
         </div>";
         

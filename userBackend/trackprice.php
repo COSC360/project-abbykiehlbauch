@@ -1,12 +1,11 @@
 <?php
     session_start();
-    include "../dbConnection.php";
-    
+    include "../dbConnection.php"; 
     $conn = new mysqli($connString, $user, $pass, $dbname);
-    
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }    
+
     //get current price of item
     $sql = "SELECT currPrice FROM products WHERE productId = ".$_SESSION['productId'];
     $result = mysqli_query($conn,$sql);
@@ -20,6 +19,6 @@
     $stmtPrice->bind_param("sidd", $_SESSION['username'],$_SESSION['productId'], $_POST['target-price'], $price);
     $stmtPrice->execute();
     $stmtPrice->close();
-
     $conn->close();
+    
 ?>

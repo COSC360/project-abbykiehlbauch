@@ -16,7 +16,6 @@
    <link rel="stylesheet" href="css/search.css" />
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/search.js"></script>
-
    <script src="https://ajax.aspnetCDN.com/ajax/jQuery/jQuery-3.3.1.min.js"></script>
    <script>
         //call php file to generate results
@@ -40,6 +39,7 @@
             xmlhttp.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200){
                     document.getElementById("product-info").innerHTML = this.responseText;
+                    initializeListener();
                 }
             };
             xmlhttp.open("GET", "userBackend/moreinfo.php?q="+prodId);

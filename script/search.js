@@ -1,17 +1,22 @@
-/*window.addEventListener("load", function(){
-    document.getElementById("log-price-form").addEventListener("submit", function(e){
-        var moreInfo = document.getElementById("more-info");
-        moreInfo.style.visibility = "visible";
-    });
-});*/
-window.addEventListener("load", function(){
-    document.getElementById("priceLog").addEventListener("submit", function(e){
-        var fields = document.getElementsByTagName("priceLog input");
-        for(let i = 0; i < fields.length; i++){
-            if(fields[i].value == "")
-            {
-                e.preventDefault();
-            }
+function initializeListener(){
+    document.getElementById("submitBtn").addEventListener("click",function(e){
+        console.log("hi");
+        var field = document.getElementById("new-price");
+        if(field.value == "")
+        {
+            e.preventDefault();
+            alert("Please enter a price");
+        }
+        else{
+            submitPrice(field.value);
         }
     });
-});
+}
+
+function submitPrice(itemPrice){
+    console.log(itemPrice);
+    $.ajax({url: "userBackend/logprice.php", type: 'POST', data:{newprice: itemPrice}, success: function(response){
+            alert("Thank you for updating this item's price!");
+        }
+    });
+}

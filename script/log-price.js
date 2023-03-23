@@ -1,11 +1,21 @@
-window.addEventListener("load", function(){
+/*window.addEventListener("load", function(){
     document.getElementById("priceLog").addEventListener("submit", function(e){
-        var fields = document.getElementsByTagName("input");
-        for(let i = 0; i < fields.length-1; i++){
-            if(fields[i].value == "")
-            {
-                e.preventDefault();
-            }
+        console.log("hi");
+        var field = document.getElementById("new-price");
+        if(field.value == "")
+        {
+            e.preventDefault();
+            alert("Please enter a price");
+        }
+        else{
+            submitPrice();
         }
     });
 });
+
+function submitPrice(){
+    $.ajax({url: "userBackend/logprice.php", type: 'POST', data: $('#new-price').value(), success: function(response){
+            alert("Thank you for updating this item's price!");
+        }
+    });
+}*/
