@@ -5,10 +5,7 @@
         header('location: login.php');
         exit();
     }
-    $connString = "localhost";
-    $user = 'root';
-    $pass = 'rootuser';
-    $dbname = "groceryTracker";
+    include "dbConnection.php";
     $conn = new mysqli($connString, $user, $pass, $dbname);
 ?>
 <!DOCTYPE html>

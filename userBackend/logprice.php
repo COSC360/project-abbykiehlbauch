@@ -1,17 +1,14 @@
 <?php
 session_start();
-$connString = "localhost";
-$user = 'root';
-$pass = 'rootuser';
-$dbname = "groceryTracker";
+include "../dbConnection.php";
 $conn = new mysqli($connString, $user, $pass, $dbname);
 echo $_SESSION['productId'];
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }    
 // prepare and bind
-$stmt = $conn->prepare("INSERT INTO prices(productId, price) VALUES (?,?)");
-$stmt->bind_param("id", $_SESSION['productId'],$_POST['price']);
+$stmt = $conn->prepare("INSERT INTO prices(productId, price, username) VALUES (?,?, ?)");
+$stmt->bind_param("ids", $_SESSION['productId'],$_POST['price'], $_SESSION['username']);
 $stmt->execute();
 $stmt->close();
 

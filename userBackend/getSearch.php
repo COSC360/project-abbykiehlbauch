@@ -1,10 +1,7 @@
 <?php 
 session_start();
 $q = $_GET['q'];
-$connString = "localhost";
-$user = 'root';
-$pass = 'rootuser';
-$dbname = "groceryTracker";
+include "../dbConnection.php";
 
 $conn = new mysqli($connString, $user, $pass, $dbname);
 if ($conn->connect_error) {

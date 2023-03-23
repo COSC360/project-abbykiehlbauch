@@ -1,10 +1,7 @@
 <?php 
 session_start();
 $q = $_GET['q'];
-$connString = "localhost";
-$user = 'root';
-$pass = 'rootuser';
-$dbname = "groceryTracker";
+include "../dbConnection.php";
 
 $conn = new mysqli($connString, $user, $pass, $dbname);
 if ($conn->connect_error) {
@@ -18,7 +15,7 @@ while($row = mysqli_fetch_array($result)){
         echo"<h3>".$row['fname']." ".$row['lname']."</h3>";
         echo"<p>".$row['username']."</p>
         <p>".$row['emailAddress']."</p>";
-        echo "<input id = 'see-more' type = 'button' value = 'See more' onclick = 'return addListener(".$row['username'].")'>";
+        echo "<input id = 'see-more' type = 'button' value = 'See more' onclick = 'return viewMore(\"".$row['username']."\")'>";
         echo "</div>";
     };
 mysqli_close($conn);

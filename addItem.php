@@ -6,6 +6,8 @@
    <link rel="stylesheet" href="css/addItem.css" />
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/add-item.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
 </head>
 <body>
@@ -19,7 +21,7 @@
 <h2>Add an item to the database!</h2>
 <div id = "add-item">
     <table>
-        <form id = "newItem" method = POST action = "userBackend/insertItem.php">
+        <form id = "newItem" method = 'POST' action = "">
             <tr><td><label>Item name: </label></td><td><input type = "text" name = "itemName" placeholder = "e.g. Black beans"></td></tr>
             <tr><td><label>Item brand: </label></td><td><input type = "text" name = "itemBrand" placeholder = "e.g. No name"></td></tr>
             <tr><td><label>Store: </label></td><td><input type="text" name = "store" placeholder = "e.g. Save-On-Foods"></td></tr>
@@ -37,7 +39,7 @@
                 </select></td>
             </tr>
             <tr><td><label for = "description">Item description: </label></td><td><input name = description type = "text"></td></tr>
-            <tr><td colspan = "2"><input id = "submitBtn" type = "submit" value = "Add an item"></td></tr>
+            <tr><td colspan = "2"><input id = "submitBtn" type = "button" value = "Add an item" onclick = "submitForm();"></td></tr>
         </form>
     </table>
 </div>
