@@ -13,7 +13,7 @@
 <!--Login to system as customer or admin-->
 <div id = "loginForm">
     <h3>Please Login to System</h3>
-    <form id="login" method=post action="authentication.php">
+    <form id="login" method=post action="authentication.php?q=user">
     <table>
     <tr>
         <td>Username: </td>
@@ -27,14 +27,17 @@
     <br/>
     <input class="submit" type="submit" name="submitlogin" value="Log In">
     </form>
-    <form method=post action="reset.jsp">
+    <form method=post action="">
         <input class="submit" type="submit" name="forgotpassword" value="Forgot Password">
     </form>
+    <div id = "switchPage">
+    <input id = "switch" type = "button" value = "Login as admin">
+</div>
 </div>
 <!--Register in system-->
 <div id = "registerForm">
     <h3>New here? Register today!</h3>
-    <form name="register" method=post action="userBackend/addUser.php">
+    <form name="register" method=post action="userBackend/addUser.php?q=user">
     <table>
     <tr>
         <td>Email address: </td>

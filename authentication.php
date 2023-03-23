@@ -17,14 +17,23 @@ if (isset($_POST['submitlogin'])) {
     $password = mysqli_real_escape_string($conn, $password);
 
     //query the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
+    if($_GET['q'] == 'user')
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
+    else
+        $stmt = $conn->prepare("SELECT * FROM adminuser WHERE username=? AND password=?");
     $stmt->bind_param("ss",$username,$password);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if (mysqli_num_rows($result) == 1) {
         $_SESSION['username'] = $username;
-        header('location: profile.php'); //redirect to homepage
+        $_SESSION['admin'];
+        if($_GET['q'] == 'user')
+            header('location: profile.php'); //redirect to homepage
+        else{
+            $_SESSION['admin'] = "true";
+            header('location: admin-profile.php');
+        }
         exit();
     } else {
         echo "Invalid username or password.";

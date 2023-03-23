@@ -18,9 +18,7 @@
     $stmt->bind_result($username, $password, $email, $fname, $lname);
     while($stmt->fetch()){
         $username.$password.$email.$fname.$lname;
-    }
-
-    
+    } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,17 +31,7 @@
    <script type="text/javascript" src="script/user-profile.js"></script>
 </head>
 <body>
-<header id="masthead">
-    <h1>Grocery Store Price Tracker</h1>
-    <nav>
-        <p><a href = "search.php">Search page</a></p>
-        <p><a href = "login.php">Login page</a></p>
-        <p><a href = "addItem.php">Add an Item</a></p>
-    </nav>
-    <a href = "profile.php">
-        <img id = "profile" src = "images/profile.png" href = "profile.php">
-    </a>
-</header>
+<?php include "userHeader.php";?>
 <div id = "edit-profile">
 <?php echo "<h2>Welcome <span id = \"fname\">".$fname."</span>!</h2>" ?>
 <table>

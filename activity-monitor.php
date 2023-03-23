@@ -8,16 +8,7 @@
    <script type="text/javascript" src="script/search-users.js"></script>
 </head>
 <body>
-    <header id="masthead">
-        <h1>Grocery Store Price Tracker</h1>
-        <nav>
-            <p><a href = "search-users.php">Search for Users</a></p>
-            <p><a href = "activity-monitor.php">Activity Monitor</a></p>
-        </nav>
-        <a href = "profile.php">
-            <img id = "profile" src = "images/profile.png" href = "admin-profile.php">
-        </a>
-    </header>
+    <?php include "adminHeader.php"?>
     <div id = "search-dates">
         <label for = "target-date">Search by date: </label>
         <input type = "date" id = "target-date">

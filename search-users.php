@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    // Check if the user is not logged in and redirect to the login page
+    if (!isset($_SESSION['username'])) {
+        header('location: login.php');
+        exit();
+    }
+    $connString = "localhost";
+    $user = 'root';
+    $pass = 'rootuser';
+    $dbname = "groceryTracker";
+    $conn = new mysqli($connString, $user, $pass, $dbname);
+?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -6,33 +19,32 @@
    <link rel="stylesheet" href="css/search-users.css" />
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/search-users.js"></script>
+   <script>
+    function results(){
+        var str = document.getElementById("searchbar").value;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200){
+                document.getElementById("results").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "adminBackend/getUserSearch.php?q="+str);
+        xmlhttp.send();
+        return false;
+    }
+   </script>
 </head>
 <body>
-    <header id="masthead">
-        <h1>Grocery Store Price Tracker</h1>
-        <nav>
-            <p><a href = "search-users.php">Search for Users</a></p>
-            <p><a href = "activity-monitor.php">Activity Monitor</a></p>
-        </nav>
-        <a href = "admin-profile.php">
-            <img id = "profile" src = "images/profile.png" href = "admin-profile.php">
-        </a>
-        </header>
+    <?php include "adminHeader.php"?>
 <div id = "search-bar">
     <p>
         <label for = "searchbar">Search for users: </label>
-        <input type = "search" id = "searchbar">
+        <input type = "search" id = "searchbar" onkeyup = "return results()">
     </p>
 </div>
 <div id="main">
+<h1>Results</h1>
 <div id="results">
-    <h1>Results</h1>
-    <div class="user-entry">
-        <h3>FirstName LastName</h3>
-        <p>Username</p>
-        <p>Email Address</p>
-        <input id = "see-more" type = "button" value = "See more">
-    </div> 
 </div>
 <div id="center">
     <div id="more-info">

@@ -52,17 +52,13 @@
     </script>
 </head>
 <body>
-    <header id="masthead">
-        <h1>Grocery Store Price Tracker</h1>
-        <nav>
-            <p><a href = "search.php">Search page</a></p>
-            <p><a href = "login.php">Login page</a></p>
-            <p><a href = "addItem.php">Add an Item</a></p>
-        </nav>
-        <a href = "profile.php">
-            <img id = "profile" src = "images/profile.png" href = "user-profile.php">
-        </a>
-        </header>
+    <?php 
+    if (!isset($_SESSION['admin'])) {
+        include "userHeader.php";
+    }else{
+        include "adminHeader.php";
+    }
+    ?>
 <div id = "search-bar">
     <p>
         <form id = "search-bar" >

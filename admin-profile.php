@@ -1,3 +1,26 @@
+<?php
+session_start();
+// Check if the user is not logged in and redirect to the login page
+if (!isset($_SESSION['username'])) {
+    header('location: login.php');
+    exit();
+}
+$connString = "localhost";
+$user = 'root';
+$pass = 'rootuser';
+$dbname = "groceryTracker";
+$conn = new mysqli($connString, $user, $pass, $dbname);
+
+$stmt = $conn->prepare("SELECT * FROM adminuser WHERE username=?");
+$stmt->bind_param("s",$_SESSION['username']);
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($username, $password, $email, $fname, $lname);
+while($stmt->fetch()){
+    $username.$password.$email.$fname.$lname;
+} 
+?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -8,17 +31,7 @@
    <script type="text/javascript" src="script/admin-profile.js"></script>
 </head>
 <body>
-<header id="masthead">
-    <h1>Grocery Store Price Tracker</h1>
-    <nav>
-        <p><a href = "search-users.html">Search for Users</a></p>
-        <p><a href = "activity-monitor.html">Activity Monitor</a></p>
-    </nav>
-    <a href = "profile.html">
-        <img id = "profile" src = "images/profile.png" href = "admin-profile.html">
-    </a>
-</header>
-
+<?php include "adminHeader.php";?>
 <div id = "edit-profile">
 <h2>Welcome <span id = "fname">Jane</span>!</h2>
 <table>

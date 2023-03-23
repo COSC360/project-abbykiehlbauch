@@ -4,8 +4,9 @@ window.addEventListener("load", function(){
         for(let i = 0; i < fields.length-2; i++){
             if(fields[i].value == "")
             {
-                e.preventDefault();
+                e.preventDefault(); 
             }
         }
     });
 });
+    
