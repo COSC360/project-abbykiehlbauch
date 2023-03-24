@@ -25,7 +25,7 @@ while($row = mysqli_fetch_array($result)){
         echo "<p>Comment for product: ".$comment['productName']."</p>";
         echo "<p>".$comment['date']." - ".$comment['username']."</p>
             <p>".$comment['comment']."</p>";
-        echo "<input type = 'button' id = 'delete' value = 'DELETE COMMENT'>";
+        echo "<input type = 'button' id = 'delete' value = 'DELETE COMMENT' onclick = \"return initializeListener('".$comment['username']."','".$comment['date']."')\">";
         echo "</article>";
     }
     echo "</div>";
