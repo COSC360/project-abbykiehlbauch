@@ -14,11 +14,13 @@
         $price = $row['currPrice'];
     }
 
-    //insert price into price db
-    $stmtPrice = $conn->prepare("INSERT INTO trackeditems (username, productId, trackedPrice, currPrice) VALUES (?, ?, ?, ?)");
-    $stmtPrice->bind_param("sidd", $_SESSION['username'],$_SESSION['productId'], $_POST['trackprice'], $price);
-    $stmtPrice->execute();
-    $stmtPrice->close();
-    $conn->close();
+    if(isset($_POST['trackprice']) && isset($price)){
+        //insert price into price db
+        $stmtPrice = $conn->prepare("INSERT INTO trackeditems (username, productId, trackedPrice, currPrice) VALUES (?, ?, ?, ?)");
+        $stmtPrice->bind_param("sidd", $_SESSION['username'],$_SESSION['productId'], $_POST['trackprice'], $price);
+        $stmtPrice->execute();
+        $stmtPrice->close();
+        $conn->close();
+    }
 
 ?>

@@ -9,13 +9,13 @@
     }    
     $success = false;
     // prepare and bind
-    if(isset($_POST['description'])){
+    if(isset($_POST['description']) && isset($_POST['itemName']) && isset($_POST['itemBrand']) && isset($_POST['store']) &&isset($_POST['volume']) && isset($_POST['units']) && isset($_POST['price'])){
         $stmt = $conn->prepare("INSERT INTO products (productName, productBrand, store, `description`, volume, unit, currPrice) VALUES (?, ?, ?, ?, ?, ?,?)");
         $stmt->bind_param("ssssdsd",$_POST['itemName'], $_POST['itemBrand'],$_POST['store'],$_POST['description'],$_POST['volume'], $_POST['units'],$_POST['price']);
         $stmt->execute();
         $stmt->close();
         $success = true;
-    }else{
+    }else if (isset($_POST['itemName']) && isset($_POST['itemBrand']) && isset($_POST['store']) &&isset($_POST['volume']) && isset($_POST['units']) && isset($_POST['price'])){
         $stmt = $conn->prepare("INSERT INTO products (productName, productBrand, store, volume, unit, currPrice) VALUES (?, ?, ?, ?, ?,?)");
         $stmt->bind_param("sssdsd",$_POST['itemName'], $_POST['itemBrand'],$_POST['store'],$_POST['volume'], $_POST['units'],$_POST['price']);
         $stmt->execute();
