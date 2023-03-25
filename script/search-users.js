@@ -31,10 +31,17 @@ function viewMore(username){
     xmlhttp.send();
 }
 
-function initializeListener(username, date){
+function deleteComment(username, date){
     $.ajax({url: "adminBackend/deleteComment.php", type: 'POST', data:{user: username, date:date}, success: function(response){
         alert("This comment has been deleted");
         $(".activity").load(location.href + " .activity");
+        }
+    });
+}
+function deleteUser(username){
+    $.ajax({url: "adminBackend/deleteUser.php", type: 'POST', data:{user: username}, success: function(response){
+        alert("This user has been deleted");
+        $("#main").load(location.href + " #main");
         }
     });
 }

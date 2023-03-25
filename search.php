@@ -1,10 +1,5 @@
 <?php
     session_start();
-    // Check if the user is not logged in and redirect to the login page
-    if (!isset($_SESSION['username'])) {
-        header('location: login.php');
-        exit();
-    }
     include "dbConnection.php";
     $conn = new mysqli($connString, $user, $pass, $dbname);
 ?>

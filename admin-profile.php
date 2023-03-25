@@ -1,10 +1,5 @@
-<?php
+<?php 
 session_start();
-// Check if the user is not logged in and redirect to the login page
-if (!isset($_SESSION['username'])) {
-    header('location: login.php');
-    exit();
-}
 include "dbConnection.php";
 $conn = new mysqli($connString, $user, $pass, $dbname);
 
@@ -12,12 +7,11 @@ $stmt = $conn->prepare("SELECT * FROM adminuser WHERE username=?");
 $stmt->bind_param("s",$_SESSION['username']);
 $stmt->execute();
 $stmt->store_result();
-$stmt->bind_result($username, $password, $email, $fname, $lname);
+$stmt->bind_result($username, $email, $password, $fname, $lname);
 while($stmt->fetch()){
-    $username.$password.$email.$fname.$lname;
+    $username.$email.$password.$fname.$lname;
 } 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -30,29 +24,31 @@ while($stmt->fetch()){
 <body>
 <?php include "adminHeader.php";?>
 <div id = "edit-profile">
-<h2>Welcome <span id = "fname">Jane</span>!</h2>
+<?php echo "<h2>Welcome <span id = \"fname\">".$fname."</span>!</h2>" ?>
 <table>
-<form id = "profile-info">
-    <tr>
-        <td><label for = "email">Email Address: </label></td>
-        <td><input type = "email" id = "email" value = "example@mail.com"></td>
-    </tr>
+<form id = "profile-info" method = POST action = "userBackend/updateProfile.php">
     <tr>
         <td><label for = "username">Username: </label></td>
-        <td><input type = "text" id = "username" value = "janedoe"></td>
+        <?php echo "<td><input type = 'text' name = 'username' value = '".$username."' readonly></td>" ?>
+    </tr>
+    <tr>
+        <td><label for = "email">Email Address: </label></td>
+        <?php echo "<td><input type = \"email\" name = \"email\" value = '".$email."'></td>" ?>
     </tr>
     <tr>
         <td><label for = "firstName">First Name: </label></td>
-        <td><input type = "text" id = "firstName" value = "Jane"></td>
+        <?php echo "<td><input type = 'text' name = 'firstName' value = '".$fname."'></td>" ?>
     </tr>
     <tr>
         <td><label for = "lastName">Last Name: </label></td>
-        <td><input type = "text" id = "lastName" value = "Doe"></td>
+        <?php echo "<td><input type = 'text' name = 'lastName' value = '".$lname."'></td>" ?>
     </tr>
-    <tr colspan = "2"><td><input type = "submit" value = "Save Changes"> </td></tr>
+    <tr colspan = "2"><td><input type = "submit" value = "Save Changes"></td></tr>
 </table>
 </form>
-<input id = "logout" type = "button" value = "Log Out">
+<form id = "logoutButton" method = "post" action = "logout.php">
+    <input id = "logout" type = "submit" value = "Log Out">
+</form>
 </div>
 <div id = "welcome">
     <p>Welcome to your administrator portal! To return to the main site, click the button below. Get back to this portal by clicking the profile icon in the top right!</p>

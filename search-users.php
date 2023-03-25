@@ -1,10 +1,5 @@
-<?php
+<?php 
     session_start();
-    // Check if the user is not logged in and redirect to the login page
-    if (!isset($_SESSION['username'])) {
-        header('location: login.php');
-        exit();
-    }
     include "dbConnection.php";
     $conn = new mysqli($connString, $user, $pass, $dbname);
 ?>
@@ -20,7 +15,9 @@
 
 </head>
 <body>
-    <?php include "adminHeader.php"?>
+<?php
+    include "adminHeader.php";
+?>
 <div id = "search-bar">
     <p>
         <label for = "searchbar">Search for users: </label>
@@ -34,7 +31,6 @@
 <div id="center">
     <div id="more-info">
         <div id = "user-info"></div>
-        <input id = "block-user" type = "button" value = "DISABLE USER">
     </div>
 </div>
 </div>

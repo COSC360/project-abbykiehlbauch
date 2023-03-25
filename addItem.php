@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    // Check if the user is not logged in and redirect to the login page
+    if (!isset($_SESSION['username'])) {
+        header('location: login.php');
+        exit();
+    }
+    include "dbConnection.php";
+    $conn = new mysqli($connString, $user, $pass, $dbname);
+?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -7,8 +17,6 @@
    <link rel="stylesheet" href="css/header.css" />
    <script type="text/javascript" src="script/add-item.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    
 </head>
 <body>
 <?php 

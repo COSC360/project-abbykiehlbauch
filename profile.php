@@ -5,6 +5,10 @@
         header('location: login.php');
         exit();
     }
+    if(isset($_SESSION['admin']))
+    {
+        header('location: admin-profile.php');
+    }
     include "dbConnection.php";
     $conn = new mysqli($connString, $user, $pass, $dbname);
 
