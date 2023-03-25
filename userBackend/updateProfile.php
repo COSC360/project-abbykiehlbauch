@@ -13,7 +13,7 @@
     $stmtPrice->bind_param("ssss", $_POST['firstName'], $_POST['lastName'], $_POST['email'], $_SESSION['username']);
     $stmtPrice->execute();
 
-    header("Location: profile.php");
+    header("Location: ../profile.php");
     exit();
 
     $stmtPrice->close();
