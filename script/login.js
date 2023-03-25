@@ -13,9 +13,9 @@ window.addEventListener("load", function(){
     });
     document.getElementById("switch").addEventListener("click", function(e){
         console.log(window.location.pathname)
-        if(window.location.pathname == "/project-abbykiehlbauch/adminLogin.php")
+        if(window.location.pathname == "/abbyk02/project-abbykiehlbauch/adminLogin.php")
             window.location.assign("login.php");
-        else if(window.location.pathname == "/project-abbykiehlbauch/login.php")
+        else if(window.location.pathname == "/abbyk02/project-abbykiehlbauch/login.php")
             window.location.assign("adminLogin.php");
     });
 });
