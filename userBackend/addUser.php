@@ -16,7 +16,7 @@ include "../dbConnection.php";
     $stmt->execute();
     $_SESSION['username'] = $_POST['username'];
     if($_GET['q'] == 'user')
-        header('location: profile.php'); //redirect to homepage
+        header('location: ../profile.php'); //redirect to homepage
     else
         header('location: ../admin-profile.php');
 
