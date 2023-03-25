@@ -44,10 +44,12 @@
     </script>
 </head>
 <body>
-    <?php 
-    if (!isset($_SESSION['admin'])) {
+    <?php
+    if(!isset($_SESSION['username'])){
+        include "guestHeader.php";
+    }else if (!isset($_SESSION['admin'])) {
         include "userHeader.php";
-    }else{
+    }else if(isset($_SESSION['admin'])){
         include "adminHeader.php";
     }
     ?>

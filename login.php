@@ -31,7 +31,6 @@
         <input class="submit" type="submit" name="forgotpassword" value="Forgot Password">
     </form>
     <div id = "switchPage">
-    <input id = "switch" type = "button" value = "Login as admin">
 </div>
 </div>
 <!--Register in system-->
@@ -63,6 +62,10 @@
     <br/>
     <input class="submit" type="submit" name="submitlogin" value="Register">
     </form>
+</div>
+<div id = 'otherButtons'>
+    <input id = "guest" type = 'button' value = 'CONTINUE AS GUEST' onclick = "document.location.href='search.php'">
+    <input id = "switch" type = "button" value = "Login as admin">
 </div>
 </body>
 </html>

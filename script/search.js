@@ -22,6 +22,17 @@ function initializeListener(){
             trackPrice(field.value);
         }
     });
+    document.getElementById("comment").addEventListener("click",function(e){
+        var field = document.getElementById("comment-text");
+        if(field.value == "")
+        {
+            e.preventDefault();
+            alert("Please write a comment!");
+        }
+        else{
+            writeComment(field.value);
+        }
+    });
 }
 
 function submitPrice(itemPrice){
@@ -36,4 +47,19 @@ function trackPrice(itemPrice){
         alert("You are now tracking this item! Go to your profile to see all of your tracked items.");
     }
 });
+}
+
+function writeComment(field){
+    $.ajax({url: "userBackend/insertComment.php", type: 'POST', data:{comment: field}, success: function(response){
+        alert("Your comment has been published.");
+    }
+});
+}
+
+function deleteItem(productId){
+    $.ajax({url: "adminBackend/deleteItem.php", type: 'POST', data:{product: productId}, success: function(response){
+        alert("This item has been deleted");
+        $("#main").load(location.href + " #main");
+        }
+    });
 }

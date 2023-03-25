@@ -64,3 +64,8 @@
 #write-comment [type="text"]{
     width:30em;
 }
+#delete-item{
+    margin-top:1em;
+    color:white;
+    background-color: red;
+}

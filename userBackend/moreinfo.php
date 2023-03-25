@@ -34,6 +34,7 @@ echo "<h3>".$row['productName']."</h3>
         }
         echo "</div>";
         
+        if(isset($_SESSION['username'])){
         //set price alert
         echo "<div id = 'price-alert'>
                 <form id = 'trackPrice' method = POST action = ''>
@@ -44,8 +45,9 @@ echo "<h3>".$row['productName']."</h3>
                 </p>
             </form>
         </div>";
-
+        }
         //log new price for a product
+        if(isset($_SESSION['username'])){
         echo "<div id = 'log-price'>
             <h3>Log Price</h3>
             <form id = 'priceLog' method = 'POST' action = ''>
@@ -53,6 +55,7 @@ echo "<h3>".$row['productName']."</h3>
                 <input id = 'submitBtn' type = 'button' value = 'Log new price'>
             </form>
         </div>";
+        }
         
         $sqlc = "SELECT `date`, username, comment FROM comments WHERE productId = ".$_GET['q']." ORDER BY date DESC";
         $comments = mysqli_query($conn,$sqlc);
@@ -66,14 +69,21 @@ echo "<h3>".$row['productName']."</h3>
         }
         echo "</div>";
 
+        if(isset($_SESSION['username'])){
         //write a comment
         echo "<p>
-            <form id = 'write-comment' method = POST action = 'userBackend/insertComment.php'>
-                <input type = 'text' name = 'comment'>
-                <input type = 'submit' value = 'Send'>
+            <form id = 'write-comment' method = POST action = ''>
+                <input id = 'comment-text' type = 'text' >
+                <input id = 'comment' type = 'button' value = 'Send'>
             </form>
         </p>
     </div>";
+        }else{
+            echo "<p>Login to track and log prices, and write comments!</p>";
+        }
     
+    if(isset($_SESSION['admin']))
+        echo "<input id = 'delete-item' type = 'button' value = 'DELETE ITEM' onclick = \"return deleteItem('".$_SESSION['productId']."')\">";
+
 }
 ?>
