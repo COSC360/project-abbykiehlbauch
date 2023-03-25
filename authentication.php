@@ -2,10 +2,7 @@
 session_start();
 if (isset($_POST['submitlogin'])) {
     //connect to the database
-    $connString = "localhost";
-    $user = 'root';
-    $pass = 'rootuser';
-    $dbname = "groceryTracker";
+    include "dbConnection.php";
     $conn = new mysqli($connString, $user, $pass, $dbname);
 
     //get the user input
