@@ -65,7 +65,7 @@
 </div>
 <div id = 'otherButtons'>
     <input id = "guest" type = 'button' value = 'CONTINUE AS GUEST' onclick = "document.location.href='search.php'">
-    <input id = "switch" type = "button" value = "Login as admin">
+    <input id = "switch" type = "button" value = "Login as admin" onclick = "document.location.href='adminLogin.php'">
 </div>
 </body>
 </html>
