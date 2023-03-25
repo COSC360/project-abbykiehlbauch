@@ -35,8 +35,8 @@
         }
         $stmtID->close();
         //insert price into price db
-        $stmtPrice = $conn->prepare("INSERT INTO prices (productId, price) VALUES (?, ?)");
-        $stmtPrice->bind_param("id", $prodId, $_POST['price']);
+        $stmtPrice = $conn->prepare("INSERT INTO prices (productId, price, username) VALUES (?, ?, ?)");
+        $stmtPrice->bind_param("ids", $prodId, $_POST['price'], $_SESSION['username']);
         $stmtPrice->execute();
 
         $stmtPrice->close();
