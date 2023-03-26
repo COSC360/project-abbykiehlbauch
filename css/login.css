@@ -10,3 +10,9 @@
 submit{
     display:inline;
 }
+#otherButtons{
+    padding:2em;
+    clear:both;
+    width:fit-content;
+    margin:auto;
+}

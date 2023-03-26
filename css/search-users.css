@@ -31,7 +31,7 @@
 #see-more{
     display:block;
 }
-#activity{
+.activity{
     border:1px solid black;
     overflow:scroll;
     height:20em;
