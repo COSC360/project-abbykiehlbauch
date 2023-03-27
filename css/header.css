@@ -45,6 +45,8 @@ footer{
     display:block;
     width:auto;
     margin:auto;
-    color:lightblue;
-
+    background-color:#d2a679;
+    padding: 0.5em;
+    text-align:center;
+    border-radius:0.5em;
 }
