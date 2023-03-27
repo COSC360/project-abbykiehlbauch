@@ -41,3 +41,10 @@ nav p{
     top:3em;
     right:5em;
 }
+footer{
+    display:block;
+    width:auto;
+    margin:auto;
+    color:lightblue;
+
+}
