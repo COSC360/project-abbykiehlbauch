@@ -33,6 +33,7 @@
 </head>
 <body>
 <?php include "userHeader.php";?>
+<div id = "main">
 <div id = "edit-profile">
 <?php echo "<h2>Welcome <span id = \"fname\">".$fname."</span>!</h2>" ?>
 <table>
@@ -84,5 +85,12 @@
 
 ?>
 </div>
+</div>
+<footer>
+    <p>DISCLAIMER: The grocery store price tracker relies on honesty and integrity from its user's in order to keep all
+        information on the website accurate and up to date. Please be honest when logging prices and leaving comments.
+        Any suspicious user activity will be investigated and users may be banned at the discretion of administrators.</p>
+</footer>
+
 </body>
 </html>
