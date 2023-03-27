@@ -71,7 +71,13 @@
         <div id = "product-info"></div>
     </div>
 </div>
-</body>
 
+<footer>
+    <p>The grocery store price tracker relies on honesty and integrity from its user's in order to keep all
+        information on the website accurate and up to date. Please be honest when logging prices and leaving comments.
+        Any suspicious user activity will be investigated and users may be banned at the discretion of administrators.</p>
+</footer>
+
+</body>
 </script>
 </html>
