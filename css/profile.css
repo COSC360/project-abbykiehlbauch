@@ -26,3 +26,6 @@
     box-shadow: 4px 4px grey;
     border-radius:1em;
 }
+#main{
+    display:block;
+}
