@@ -63,7 +63,7 @@
                 $sql = "SELECT store FROM products GROUP BY store";
                 $result = mysqli_query($conn,$sql);
                 while($row = mysqli_fetch_array($result)){
-                    echo "<option>".$row['store']."</option>"
+                    echo "<option>".$row['store']."</option>";
                 }
             ?>
             </select>
