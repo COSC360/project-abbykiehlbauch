@@ -16,13 +16,14 @@
         //call php file to generate results
         function results(){
             var str = document.getElementById("searchbar").value;
+            var store = document.getElementById("dropdown").value;
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200){
                     document.getElementById("results").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "userBackend/getSearch.php?q="+str);
+            xmlhttp.open("GET", "userBackend/getSearch.php?q="+str+"&s="+store);
             xmlhttp.send();
             return false;
         }
@@ -58,7 +59,7 @@
         <form id = "search-bar" >
             <label for = "searchbar">Search for items: </label>
             <input type = "search" id = "searchbar" onkeyup = "return results()" placeholder = "Start typing to see items...">
-            <select>
+            <select id = "dropdown" onkeyup = "return results()">
             <?php
                 $sql = "SELECT store FROM products GROUP BY store";
                 $result = mysqli_query($conn,$sql);

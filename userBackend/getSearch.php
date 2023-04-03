@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $q = $_GET['q'];
+$store = $_GET['s'];
 include "../dbConnection.php";
 
 $conn = new mysqli($connString, $user, $pass, $dbname);
@@ -8,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }    
 
-$sql = "SELECT * FROM products WHERE productName LIKE '%".$q."%' GROUP BY productId";
+$sql = "SELECT * FROM products WHERE productName LIKE '%".$q."%' AND store LIKE '%".$store."%'";
 $result = mysqli_query($conn,$sql);
 
 while($row = mysqli_fetch_array($result)){
