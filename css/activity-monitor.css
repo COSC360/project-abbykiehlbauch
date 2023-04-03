@@ -49,6 +49,7 @@
     margin-left:5em;
     margin-top:1em;
 }
-#users-created{
-    width: 80%;
+#myChart{
+    width: 50%;
+    margin: auto;
 }

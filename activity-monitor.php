@@ -74,7 +74,8 @@
         ];
     ?>
     <div id = "users-created">
-    <canvas id="myChart"></canvas>
+    <h2>Users Created by Date</h2>
+    <canvas id="myChart">
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var data = <?php echo json_encode($data); ?>;
@@ -93,6 +94,7 @@
             }
         });
     </script>
+    </canvas>
     </div>
 </body>
 </html>
