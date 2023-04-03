@@ -14,11 +14,15 @@ if (isset($_POST['submitlogin'])) {
     $password = mysqli_real_escape_string($conn, $password);
 
     //query the database
-    if($_GET['q'] == 'user')
+    if($_GET['q'] == 'user'){
         $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
-    else
+        $stmt->bind_param("ss",$username,md5($password));
+    }
+    else{
         $stmt = $conn->prepare("SELECT * FROM adminuser WHERE username=? AND password=?");
-    $stmt->bind_param("ss",$username,$password);
+        $stmt->bind_param("ss",$username,$password);
+    }
+        
     $stmt->execute();
     $result = $stmt->get_result();
 
