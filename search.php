@@ -58,6 +58,15 @@
         <form id = "search-bar" >
             <label for = "searchbar">Search for items: </label>
             <input type = "search" id = "searchbar" onkeyup = "return results()" placeholder = "Start typing to see items...">
+            <select>
+            <?php
+                $sql = "SELECT store FROM products GROUP BY store";
+                $result = mysqli_query($conn,$sql);
+                while($row = mysqli_fetch_array($result)){
+                    echo "<option>".$row['store']."</option>"
+                }
+            ?>
+            </select>
         </form>
     </p>
 </div>
