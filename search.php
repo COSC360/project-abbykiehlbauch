@@ -59,7 +59,7 @@
         <form id = "search-bar" >
             <label for = "searchbar">Search for items: </label>
             <input type = "search" id = "searchbar" onkeyup = "return results()" placeholder = "Start typing to see items...">
-            <select id = "dropdown" onkeyup = "return results()">
+            <select id = "dropdown" onclick = "return results()">
             <option> </option>
             <?php
                 $sql = "SELECT store FROM products GROUP BY store";
