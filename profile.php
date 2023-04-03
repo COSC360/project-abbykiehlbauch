@@ -20,6 +20,7 @@
     while($stmt->fetch()){
         $username.$password.$email.$fname.$lname;
     } 
+    echo $email;
 ?>
 <!DOCTYPE html>
 <html>
