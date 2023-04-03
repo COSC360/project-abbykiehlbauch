@@ -18,7 +18,7 @@ if (isset($_POST['submitlogin'])) {
         $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
     else
         $stmt = $conn->prepare("SELECT * FROM adminuser WHERE username=? AND password=?");
-    $stmt->bind_param("ss",$username,$password);
+    $stmt->bind_param("ss",$username,md5($password));
     $stmt->execute();
     $result = $stmt->get_result();
 
