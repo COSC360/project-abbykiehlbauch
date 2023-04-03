@@ -85,6 +85,9 @@
                 scales: {
                     y: {
                         beginAtZero: true
+                        ticks: {
+                            stepSize: 1
+                        }
                     }
                 }
             }
