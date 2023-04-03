@@ -1,26 +1,16 @@
 <?php
     session_start();
-    // Check if the user is not logged in and redirect to the login page
-    if (!isset($_SESSION['username'])) {
-        header('location: login.php');
-        exit();
-    }
-    if(isset($_SESSION['admin']))
-    {
-        header('location: admin-profile.php');
-    }
-    include "dbConnection.php";
+       include "dbConnection.php";
     $conn = new mysqli($connString, $user, $pass, $dbname);
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
-    $stmt->bind_param("s",$_SESSION['username']);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($username, $password, $email, $fname, $lname);
-    while($stmt->fetch()){
-        $username.$password.$email.$fname.$lname;
-    } 
-    echo $email;
+$stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
+$stmt->bind_param("s",$_SESSION['username']);
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($username, $email, $password, $fname, $lname);
+while($stmt->fetch()){
+    $username.$email.$password.$fname.$lname;
+} 
 ?>
 <!DOCTYPE html>
 <html>
