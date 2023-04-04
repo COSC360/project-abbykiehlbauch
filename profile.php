@@ -1,16 +1,20 @@
 <?php
     session_start();
-       include "dbConnection.php";
+    // Check if the user is not logged in and redirect to the login page
+    if (!isset($_SESSION['username'])) {
+        header('location: login.php');
+        exit();
+    }
+    include "dbConnection.php";
     $conn = new mysqli($connString, $user, $pass, $dbname);
-
-$stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
-$stmt->bind_param("s",$_SESSION['username']);
-$stmt->execute();
-$stmt->store_result();
-$stmt->bind_result($username, $email, $password, $fname, $lname);
-while($stmt->fetch()){
-    $username.$email.$password.$fname.$lname;
-} 
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
+    $stmt->bind_param("s",$_SESSION['username']);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($username, $email, $password, $fname, $lname);
+    while($stmt->fetch()){
+        $username.$email.$password.$fname.$lname;
+    } 
 ?>
 <!DOCTYPE html>
 <html>
