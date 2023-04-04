@@ -4,18 +4,20 @@
     if (!isset($_SESSION['username'])) {
         header('location: login.php');
         exit();
+    }else{
+        include "dbConnection.php";
+        $conn = new mysqli($connString, $user, $pass, $dbname);
+        $sql = "SELECT * FROM users WHERE username='".$_SESSION['username']."'";
+        $result = mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_array($result)){
+        $username = $row['username'];
+        $email = $row['emailAddress'];
+        $fname = $row['fname'];
+        $lname = $row['lname'];
     }
-    include "dbConnection.php";
-    $conn = new mysqli($connString, $user, $pass, $dbname);
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
-    $stmt->bind_param("s",$_SESSION['username']);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($username, $email, $password, $fname, $lname);
-    while($stmt->fetch()){
-        $username.$email.$password.$fname.$lname;
-    } 
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
