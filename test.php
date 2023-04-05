@@ -34,6 +34,4 @@ class LoginTest extends TestCase
         //ob_end_clean();
     }
 }
-
-
 ?>
