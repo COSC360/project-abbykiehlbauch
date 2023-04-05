@@ -12,6 +12,7 @@
 
 </head>
 <body>
+<input type = 'button' id = 'return' value = 'Return to search page' onclick = "window.location.assign('../search.php')" >
 <?php
 //if(isset($_SESSION['username'])){
         //Retrieve user data from database
@@ -29,7 +30,7 @@
             'labels' => $labels,
             'datasets' => [
                 [
-                    'label' => 'Price Changes',
+                    'label' => 'Price Adjustment',
                     'data' => $data,
                     'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
                     'borderColor' => 'rgba(255, 99, 132, 1)',
@@ -52,7 +53,11 @@
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            stepSize: 1
+                            stepSize: 0.5,
+			    callback: function(value, index, ticks) {
+                        	 return '$' + Chart.Ticks.formatters.numeric.apply(this, [value, index, ticks]);
+
+                    	    }
                         }
                     }
                 }

@@ -34,10 +34,10 @@ echo "<h3>".$row['productName']."</h3>
         }
         echo "</div>";
 
-	
-	if(isset($_SESSION['username']))
-	include 'priceChart.php';
-	
+	if(isset($_SESSION['username'])){
+		echo "<input type = 'button' value = 'See price log chart' onclick = \"document.location.href='userBackend/priceChart.php'\" >";
+	}
+
 	if(isset($_SESSION['username'])){
         //set price alert
         echo "<div id = 'price-alert'>
