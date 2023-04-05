@@ -1,12 +1,16 @@
 <?php 
-session_start();
+//ession_start();
 include "../dbConnection.php";
 
 $conn = new mysqli($connString, $user, $pass, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }    
-
+if(!isset($_GET['s']))
+    $store = "";
+else
+    $store = $_GET['s'];
+    
 $sql = "SELECT productId, COUNT(*) as count
 FROM prices
 WHERE priceDate >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
@@ -14,8 +18,7 @@ GROUP BY productId
 HAVING count > 3";
 $result = mysqli_query($conn, $sql);
 while($prod = mysqli_fetch_array($result)){
-    echo $prod['productId'];
-    $sql2 = "SELECT * FROM products WHERE productId = ".$prod['productId']. " AND store = '".$_GET['s']."'" ;
+    $sql2 = "SELECT * FROM products WHERE productId = ".$prod['productId']. " AND store = '".$store."'" ;
     $result2 = mysqli_query($conn,$sql2);
     while($row = mysqli_fetch_array($result2)){
         echo "<div id = item-entry>";
