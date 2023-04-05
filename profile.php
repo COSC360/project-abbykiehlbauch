@@ -79,7 +79,7 @@
         echo "<p>Target price: ".$row['trackedPrice']."</p>";
         echo "</div>";
     };
-
+    conn.close();
 ?>
 </div>
 </div>
