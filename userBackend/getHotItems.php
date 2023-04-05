@@ -10,7 +10,7 @@ if(!isset($_GET['s']))
     $store = "";
 else
     $store = $_GET['s'];
-    
+
 $sql = "SELECT productId, COUNT(*) as count
 FROM prices
 WHERE priceDate >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
@@ -18,7 +18,7 @@ GROUP BY productId
 HAVING count > 3";
 $result = mysqli_query($conn, $sql);
 while($prod = mysqli_fetch_array($result)){
-    $sql2 = "SELECT * FROM products WHERE productId = ".$prod['productId']. " AND store = '".$store."'" ;
+    $sql2 = "SELECT * FROM products WHERE productId = ".$prod['productId']. " AND store LIKE '".$store."'" ;
     $result2 = mysqli_query($conn,$sql2);
     while($row = mysqli_fetch_array($result2)){
         echo "<div id = item-entry>";
