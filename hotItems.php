@@ -42,7 +42,8 @@
 
 <div id="main">
     <h1>Hot Items</h1>
-    <div id="results"></div>
+    <h2>These products have had three or more price logs in the last 24 hours. Check them out and get 'em while they're hot!</h2>
+    <div id="results">
     <?php
     $sql = "SELECT productId, COUNT(*) as count FROM prices WHERE priceDate >= DATE_SUB(NOW(), INTERVAL 24 HOUR) GROUP BY productId HAVING count > 3";
     $result = mysqli_query($conn, $sql);
@@ -67,6 +68,7 @@
     mysqli_close($conn);
 
 ?>
+</div>
     <div id="center">
         <div id="more-info">
         <div id = "product-info"></div>
