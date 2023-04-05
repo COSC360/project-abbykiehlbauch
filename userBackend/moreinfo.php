@@ -34,57 +34,11 @@ echo "<h3>".$row['productName']."</h3>
         }
         echo "</div>";
 
-        if(isset($_SESSION['username'])){
-        //Retrieve user data from database
-        $sql = "SELECT priceDate, price as FROM prices WHERE productId = ".$_SESSION['productId'];
-        $result = mysqli_query($conn, $sql);
-
-        // Step 2: Format data for Chart.js
-        $labels = [];
-        $data = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $labels[] = $row['priceDate'];
-            $data[] = $row['price'];
-        }
-        $data = [
-            'labels' => $labels,
-            'datasets' => [
-                [
-                    'label' => 'Price Changes',
-                    'data' => $data,
-                    'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
-                    'borderColor' => 'rgba(255, 99, 132, 1)',
-                    'borderWidth' => 1
-                ]
-            ]
-        ];
-
-    echo "<div id = 'price-log-chart'>
-    <h2>Users Created by Date</h2>
-    <canvas id='price-chart'>
-    <script>
-        var ctx = document.getElementById('price-chart').getContext('2d');
-        var data = <?php echo json_encode($data); ?>;
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-    </canvas>
-    </div>";
-        }
-
-        if(isset($_SESSION['username'])){
+	
+	if(isset($_SESSION['username']))
+	include 'priceChart.php';
+	
+	if(isset($_SESSION['username'])){
         //set price alert
         echo "<div id = 'price-alert'>
                 <form id = 'trackPrice' method = POST action = ''>
@@ -96,6 +50,7 @@ echo "<h3>".$row['productName']."</h3>
             </form>
         </div>";
         }
+
         //log new price for a product
         if(isset($_SESSION['username'])){
         echo "<div id = 'log-price'>

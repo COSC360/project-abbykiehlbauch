@@ -70,3 +70,7 @@
     color:white;
     background-color: red;
 }
+#myChart{
+    width: 50%;
+    margin: auto;
+}
