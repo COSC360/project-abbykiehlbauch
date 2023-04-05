@@ -22,7 +22,7 @@
                     document.getElementById("results").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "userBackend/getSearch.php?q="+"&s="+store);
+            xmlhttp.open("GET", "userBackend/getHotItems.php?s="+store);
             xmlhttp.send();
             return false;
         }
@@ -70,9 +70,8 @@
 </div>
 <div id="main">
     <h1>Hot Items</h1>
-
     <div id="results"></div>
-
+    <?php include 'getHotItems.php' ?>
     <div id="center">
         <div id="more-info">
         <div id = "product-info"></div>
