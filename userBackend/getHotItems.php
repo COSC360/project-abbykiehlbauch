@@ -14,9 +14,10 @@ GROUP BY productId
 HAVING count > 3";
 $result = mysqli_query($conn, $sql);
 while($prod = mysqli_fetch_array($result)){
+    echo prod['productId'];
     $sql2 = "SELECT * FROM products WHERE productId = ".prod['productId']. " AND store = '".$_GET['s']."'" ;
-    $result = mysqli_query($conn,$sql2);
-    while($row = mysqli_fetch_array($result)){
+    $result2 = mysqli_query($conn,$sql2);
+    while($row = mysqli_fetch_array($result2)){
         echo "<div id = item-entry>";
         echo"<h3>".$row['productName']."</h3>";
         echo"<p>
