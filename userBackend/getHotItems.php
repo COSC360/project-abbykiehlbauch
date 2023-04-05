@@ -7,7 +7,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }    
 if(!isset($_GET['s']))
-    $store = "";
+    $store = " ";
 else
     $store = $_GET['s'];
 
