@@ -4,23 +4,20 @@
     if (!isset($_SESSION['username'])) {
         header('location: login.php');
         exit();
+    }else{
+        include "dbConnection.php";
+        $conn = new mysqli($connString, $user, $pass, $dbname);
+        $sql = "SELECT * FROM users WHERE username='".$_SESSION['username']."'";
+        $result = mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_array($result)){
+        $username = $row['username'];
+        $email = $row['emailAddress'];
+        $fname = $row['fname'];
+        $lname = $row['lname'];
     }
-    if(isset($_SESSION['admin']))
-    {
-        header('location: admin-profile.php');
-    }
-    include "dbConnection.php";
-    $conn = new mysqli($connString, $user, $pass, $dbname);
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
-    $stmt->bind_param("s",$_SESSION['username']);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($username, $password, $email, $fname, $lname);
-    while($stmt->fetch()){
-        $username.$password.$email.$fname.$lname;
-    } 
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -65,7 +62,7 @@
 <div id = "alerts">
 
 <?php
-    $tracked = "SELECT * FROM trackeditems JOIN products ON trackedItems.productId = products.productId WHERE trackeditems.username = '".$_SESSION['username']."'";
+    $tracked = "SELECT * FROM trackeditems JOIN products ON trackeditems.productId = products.productId WHERE trackeditems.username = '".$_SESSION['username']."'";
     $result = mysqli_query($conn,$tracked);
 
     while($row = mysqli_fetch_array($result)){
@@ -82,7 +79,7 @@
         echo "<p>Target price: ".$row['trackedPrice']."</p>";
         echo "</div>";
     };
-
+    conn.close();
 ?>
 </div>
 </div>

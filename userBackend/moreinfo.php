@@ -33,8 +33,12 @@ echo "<h3>".$row['productName']."</h3>
             echo "<p>".$price['priceDate']." - $".$price['price']."</p>";
         }
         echo "</div>";
-        
-        if(isset($_SESSION['username'])){
+
+	if(isset($_SESSION['username'])){
+		echo "<input type = 'button' value = 'See price log chart' onclick = \"document.location.href='userBackend/priceChart.php'\" >";
+	}
+
+	if(isset($_SESSION['username'])){
         //set price alert
         echo "<div id = 'price-alert'>
                 <form id = 'trackPrice' method = POST action = ''>
@@ -46,6 +50,7 @@ echo "<h3>".$row['productName']."</h3>
             </form>
         </div>";
         }
+
         //log new price for a product
         if(isset($_SESSION['username'])){
         echo "<div id = 'log-price'>
@@ -56,11 +61,10 @@ echo "<h3>".$row['productName']."</h3>
             </form>
         </div>";
         }
-        
+        echo "<h3>Forum</h3>";
+        echo "<div id = 'comments'>";
         $sqlc = "SELECT `date`, username, comment FROM comments WHERE productId = ".$_GET['q']." ORDER BY date DESC";
         $comments = mysqli_query($conn,$sqlc);
-        echo "<h3>Forum</h3>
-        <div id = 'comments'>";
         while($comm = mysqli_fetch_array($comments)){
             echo "<article class = \"entry\">
                 <p>".$comm['date']." - ".$comm['username']."</p>
@@ -86,4 +90,5 @@ echo "<h3>".$row['productName']."</h3>
         echo "<input id = 'delete-item' type = 'button' value = 'DELETE ITEM' onclick = \"return deleteItem('".$_SESSION['productId']."')\">";
 
 }
+//conn.close();
 ?>
