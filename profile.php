@@ -62,7 +62,7 @@
 <div id = "alerts">
 
 <?php
-    $tracked = "SELECT * FROM trackeditems JOIN products ON trackedItems.productId = products.productId WHERE trackeditems.username = '".$_SESSION['username']."'";
+    $tracked = "SELECT * FROM trackeditems JOIN products ON trackeditems.productId = products.productId WHERE trackeditems.username = '".$_SESSION['username']."'";
     $result = mysqli_query($conn,$tracked);
 
     while($row = mysqli_fetch_array($result)){
