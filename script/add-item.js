@@ -1,3 +1,9 @@
+function isDecimal(input) {
+    var decimalPattern = /^\d+(\.\d+)?$/;
+    return decimalPattern.test(input);
+  }
+
+  
 window.addEventListener("load", function(){
     document.getElementById("submitBtn").addEventListener("click", function(e){
         var fields = document.getElementsByTagName("input");
@@ -13,6 +19,12 @@ window.addEventListener("load", function(){
                 break;
             }
         }
+        if(!isDecimal(document.getElementById("priceid").value)){
+            console.log(document.getElementById("priceid").value);
+            empty = true;
+            alert("Please enter a valid price");
+        }
+
         if(!empty){
             submitForm();
         }
@@ -21,8 +33,9 @@ window.addEventListener("load", function(){
 });
 
 function submitForm(){
-    $.ajax({url: "userBackend/insertItem.php", type: 'POST', data: $('#newItem').serialize(), success: function(response){
+    $.ajax({url: "userBackend/insertItem.php", type: 'POST', data: $('#new-Item').serialize(), success: function(response){
             alert("Thank you for submitting an item!");
+            document.getElementById("new-Item").reset();
         }
     });
     }

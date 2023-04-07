@@ -42,10 +42,15 @@
 
 <div id="main">
     <h1>Hot Items</h1>
-    <h2>These products have had three or more price logs in the last 24 hours. Check them out and get 'em while they're hot!</h2>
+    <h2>These products have had price drops of over 20%. Check them out and get 'em while they're hot!</h2>
     <div id="results">
     <?php
-    $sql = "SELECT productId, COUNT(*) as count FROM prices WHERE priceDate >= DATE_SUB(NOW(), INTERVAL 24 HOUR) GROUP BY productId HAVING count > 3";
+    //$sql = "SELECT productId, COUNT(*) as count FROM prices WHERE priceDate >= DATE_SUB(NOW(), INTERVAL 72 HOUR) GROUP BY productId HAVING count > 3";
+    $sql = "SELECT curr.productId, curr.price, prev.price, (curr.price - prev.price) / prev.price * 100 as percentage_change
+            FROM prices curr
+            JOIN prices prev ON curr.productId = prev.productId AND curr.priceDate > prev.priceDate
+            WHERE (curr.price - prev.price) / prev.price * 100 < -20
+            GROUP BY curr.productId ORDER BY curr.productId, curr.priceDate DESC";
     $result = mysqli_query($conn, $sql);
     while($prod = mysqli_fetch_array($result)){
         $sql2 = "SELECT * FROM products WHERE productId = ".$prod['productId'];

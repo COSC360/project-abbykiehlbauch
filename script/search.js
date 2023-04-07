@@ -38,6 +38,8 @@ function initializeListener(){
 function submitPrice(itemPrice){
     $.ajax({url: "userBackend/logprice.php", type: 'POST', data:{newprice: itemPrice}, success: function(response){
             alert("Thank you for updating this item's price!");
+            document.getElementById("priceLog").reset();
+            document.getElementById("see-more").click();
         }
     });
 }
@@ -52,6 +54,10 @@ function trackPrice(itemPrice){
 function writeComment(field){
     $.ajax({url: "userBackend/insertComment.php", type: 'POST', data:{comment: field}, success: function(response){
         alert("Your comment has been published.");
+        document.getElementById("write-comment").reset();
+        document.getElementById("see-more").click();
+
+
     }
 });
 }

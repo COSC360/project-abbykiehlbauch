@@ -27,9 +27,6 @@
     <br/>
     <input class="submit" type="submit" name="submitlogin" value="Log In">
     </form>
-    <form method=post action="">
-        <input class="submit" type="submit" name="forgotpassword" value="Forgot Password">
-    </form>
     <div id = "switchPage">
 </div>
 </div>

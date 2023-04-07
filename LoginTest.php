@@ -19,8 +19,8 @@ class LoginTest extends TestCase
 	$msg ='Invalid username or password.';
         $this->expectOutputString($msg);
     }
-public function testSuccessfulLogin()
-    {
+	public function testSuccessfulLogin()
+    	{
         // Set up the test data
         $username = 'bobbybones';
         $password = '12345';
@@ -28,6 +28,7 @@ public function testSuccessfulLogin()
 
 	// Include the code to be tested
         include 'authenticationTest.php';
+
         // Check if the user was redirected to the correct page
 	$link='profile.php';
         $this->expectOutputString($link);
