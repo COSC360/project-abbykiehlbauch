@@ -61,6 +61,7 @@
             echo"<p>
                 <ul>
                     <li>$".$row['currPrice']."</li>
+                    <li>".$row['volume']." ".$row['unit']."</li>
                     <li>".$row['productBrand']."</li>
                     <li>".$row['store']."</li>
                 </ul>

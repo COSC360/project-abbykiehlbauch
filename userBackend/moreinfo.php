@@ -19,6 +19,7 @@ echo "<h3>".$row['productName']."</h3>
         <p>
             <ul>
                 <li>$".$row['currPrice']."</li>
+                <li>".$row['volume']." ".$row['unit']."</li>
                 <li>".$row['productBrand']."</li>
                 <li>".$row['store']."</li>
             </ul>
@@ -35,7 +36,8 @@ echo "<h3>".$row['productName']."</h3>
         echo "</div>";
 
 	if(isset($_SESSION['username'])){
-		echo "<input type = 'button' value = 'See price log chart' onclick = \"document.location.href='userBackend/priceChart.php'\" >";
+		include "priceChart.php";
+        echo "<input type = 'button' value = 'See price log chart' onclick = \"document.location.href='userBackend/priceChart.php'\" >";
 	}
 
 	if(isset($_SESSION['username'])){
