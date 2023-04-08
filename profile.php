@@ -71,12 +71,14 @@
         echo"<p>
             <ul>
                 <li>$".$row['currPrice']."</li>
+                <li>".$row['volume']." ".$row['unit']."</li>
                 <li>".$row['productBrand']."</li>
                 <li>".$row['store']."</li>
             </ul>
         </p>
         <p>".$row['description']."</p>";
         echo "<p>Target price: ".$row['trackedPrice']."</p>";
+        echo "<input id = 'delete-item' type = 'button' value = 'DELETE ITEM' onclick = \"return deleteTrack('".$row['productId']."')\">";
         echo "</div>";
     };
     conn.close();
