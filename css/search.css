@@ -73,4 +73,6 @@
 #myChart{
     width: 50%;
     margin: auto;
+	z-index: -1;
+    position:relative;
 }
